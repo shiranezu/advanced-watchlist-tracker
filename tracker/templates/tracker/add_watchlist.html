@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add Watchlist</title>
+</head>
+<body>
+    {% extends "base_generic.html" %}
+
+    {% block title %}Add Watchlist{% endblock %}
+
+    {% block content %}
+    <h2>Add a New Watchlist</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Watchlist</button>
+    </form>
+    <a href="{% url 'watchlist_list' %}">Back to Watchlists</a>
+    {% endblock %}
+
+</body>
+</html>

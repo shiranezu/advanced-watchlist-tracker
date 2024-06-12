@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends "base_generic.html" %}
+
+    {% block title %}{{ watchlist.name }}{% endblock %}
+
+    {% block content %}
+    <h2>{{ watchlist.name }}</h2>
+    <ul>
+        {% for item in items %}
+        <li>{{ item.name }}</li>
+        {% endfor %}
+    </ul>
+    <h3>Add a new item</h3>
+    <form method="post" action="{% url 'add_item' watchlist.id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Item</button>
+    </form>
+    <a href="{% url 'watchlist_list' %}">Back to Watchlists</a>
+    {% endblock %}
+
+</body>
+</html>
